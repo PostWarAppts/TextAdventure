@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -15,6 +16,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Driver extends Application {
@@ -91,7 +93,7 @@ public class Driver extends Application {
 		Scene scene = new Scene(root, 700, 900);
 		stage.setTitle("Role-Playing Game");
 		try {
-			stage.getIcons().add(new Image(new FileInputStream("images/circle3.png")));
+			stage.getIcons().add(new Image(new FileInputStream("TextAdventure/images/circle3.png")));
 		} catch (Exception exp) {
 			
 		}
@@ -106,20 +108,39 @@ public class Driver extends Application {
 	
 	public static void mapTab(Pane main) {
 		Image image = null;
+		Image image1 = null;
 		main.getChildren().clear();
 		try {
-			image = new Image(new FileInputStream("images/image.png"));
+			image = new Image(new FileInputStream("TextAdventure/images/image.png"));
+			image1 = new Image(new FileInputStream("TextAdventure/images/circle3.png"));
 		} catch (Exception exp) {
 		}
 		ImageView view = new ImageView(image);
 		Rectangle2D rect = new Rectangle2D(0, 0, 500, 300);
 		view.setViewport(rect);
 		view.setLayoutX(100);
-		view.setLayoutY(100);
+		view.setLayoutY(50);
 		Rectangle r = new Rectangle(530, 330);
 		r.setLayoutX(85);
-		r.setLayoutY(85);
-		main.getChildren().addAll(r, view);
+		r.setLayoutY(35);
+		ImageView view1 = new ImageView(image1);
+		view1.setLayoutX(340);
+		view1.setLayoutY(240);
+		
+		Rectangle r1 = new Rectangle(530, 230);
+		r1.setLayoutX(85);
+		r1.setLayoutY(415);
+		
+		Text tx = new Text("Lorum Ipsum Dolor Sut \nLorum Ipsum Dolor Sut \nLorum Ipsum Dolor Sut");
+		tx.setLayoutX(95);
+		tx.setLayoutY(440);
+		tx.setFill(Color.WHITE);
+		
+		TextField txfi = new TextField();
+		txfi.setLayoutX(85);
+		txfi.setLayoutY(645);
+		txfi.setPrefWidth(530);
+		main.getChildren().addAll(r, view, view1, r1, tx, txfi);
 	}
 	
 	public static void inventoryTab(Pane main) {
