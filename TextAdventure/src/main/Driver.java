@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -51,18 +52,20 @@ public class Driver extends Application {
 		Pane main = new Pane();
 		
 		main.setPrefSize(700, 850);
+		String[] arr = {"Lorum", "Lorum", "Lorum", "Lorum", "Lorum", "Lorum", "Lorum", "Lorum"};
+
 		
 		main.setStyle("-fx-background-color: #ddcaaa; -fx-border-color: #000000; -fx-font-size: 20; -fx-border-width: 0 4 4 4");
 		
 		topButtons.get(0).setStyle("-fx-background-color: #ddcaaa; -fx-border-color: #000000 #000000 #ddcaaa; -fx-font-size: 20; -fx-border-width: 4 4 4 4");
-		mapTab(main);
+		mapTab(main, arr, 0);
 		
 		topButtons.get(0).setOnAction(e -> {
 			for(Button b : topButtons) {
 				b.setStyle("-fx-background-color: #ddcaaa; -fx-border-color: #000000; -fx-font-size: 20; -fx-border-width: 4 4 4 4");
 			}
 			topButtons.get(0).setStyle("-fx-background-color: #ddcaaa; -fx-border-color: #000000 #000000 #ddcaaa; -fx-font-size: 20; -fx-border-width: 4 4 4 4");
-			mapTab(main);
+			mapTab(main, arr, 0);
 		});
 		topButtons.get(1).setOnAction(e -> {
 			for(Button b : topButtons) {
@@ -106,7 +109,7 @@ public class Driver extends Application {
 		launch(args);
 	}
 	
-	public static void mapTab(Pane main) {
+	public static void mapTab(Pane main, String[] arr, int t) {
 		Image image = null;
 		Image image1 = null;
 		main.getChildren().clear();
@@ -116,7 +119,7 @@ public class Driver extends Application {
 		} catch (Exception exp) {
 		}
 		ImageView view = new ImageView(image);
-		Rectangle2D rect = new Rectangle2D(0, 0, 500, 300);
+		Rectangle2D rect = new Rectangle2D(0, t, 500, 300);
 		view.setViewport(rect);
 		view.setLayoutX(100);
 		view.setLayoutY(50);
@@ -125,13 +128,15 @@ public class Driver extends Application {
 		r.setLayoutY(35);
 		ImageView view1 = new ImageView(image1);
 		view1.setLayoutX(340);
-		view1.setLayoutY(240);
+		view1.setLayoutY(200);
 		
 		Rectangle r1 = new Rectangle(530, 230);
 		r1.setLayoutX(85);
 		r1.setLayoutY(415);
 		
-		Text tx = new Text("Lorum Ipsum Dolor Sut \nLorum Ipsum Dolor Sut \nLorum Ipsum Dolor Sut");
+				
+		
+		Text tx = new Text(arr[0] + "\n" + arr[1] + "\n" + arr[2] + "\n" + arr[3] + "\n" + arr[4] + "\n" + arr[5] + "\n" + arr[6] + "\n" + arr[7]);
 		tx.setLayoutX(95);
 		tx.setLayoutY(440);
 		tx.setFill(Color.WHITE);
@@ -141,6 +146,33 @@ public class Driver extends Application {
 		txfi.setLayoutY(645);
 		txfi.setPrefWidth(530);
 		main.getChildren().addAll(r, view, view1, r1, tx, txfi);
+		
+		
+		
+		txfi.setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.ENTER) {
+				if (txfi.getText().equals("S") || txfi.getText().equals("s")) {
+					arr[0] = arr[1];
+					arr[1] = arr[2];
+					arr[2] = arr[3];
+					arr[4] = arr[5];
+					arr[5] = arr[6];
+					arr[6] = arr[7];
+					arr[7] = txfi.getText();
+					mapTab(main, arr, t+100);
+				} else {
+					arr[0] = arr[1];
+					arr[1] = arr[2];
+					arr[2] = arr[3];
+					arr[4] = arr[5];
+					arr[5] = arr[6];
+					arr[6] = arr[7];
+					arr[7] = txfi.getText();
+					mapTab(main, arr, t);
+				}
+			}
+		});
+		
 	}
 	
 	public static void inventoryTab(Pane main) {
