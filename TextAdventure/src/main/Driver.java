@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 
 import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -88,7 +89,12 @@ public class Driver extends Application {
 		
 		
 		Scene scene = new Scene(root, 700, 900);
-		
+		stage.setTitle("Role-Playing Game");
+		try {
+			stage.getIcons().add(new Image(new FileInputStream("images/circle3.png")));
+		} catch (Exception exp) {
+			
+		}
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -99,15 +105,21 @@ public class Driver extends Application {
 	}
 	
 	public static void mapTab(Pane main) {
+		Image image = null;
 		main.getChildren().clear();
-		Rectangle rect = new Rectangle(100, 100);
-		rect.setLayoutY(400);
-		rect.setLayoutX(300);
-		Rectangle rect1 = new Rectangle(50, 50);
-		rect1.setLayoutY(425);
-		rect1.setLayoutX(325);
-		rect1.setFill(Color.WHITE);
-		main.getChildren().addAll(rect, rect1);
+		try {
+			image = new Image(new FileInputStream("images/image.png"));
+		} catch (Exception exp) {
+		}
+		ImageView view = new ImageView(image);
+		Rectangle2D rect = new Rectangle2D(0, 0, 500, 300);
+		view.setViewport(rect);
+		view.setLayoutX(100);
+		view.setLayoutY(100);
+		Rectangle r = new Rectangle(530, 330);
+		r.setLayoutX(85);
+		r.setLayoutY(85);
+		main.getChildren().addAll(r, view);
 	}
 	
 	public static void inventoryTab(Pane main) {
