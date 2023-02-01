@@ -63,22 +63,16 @@ public class Driver extends Application {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					System.out.println(sc.nextLine());
 					int s = Integer.parseInt(sc.nextLine());
-					
 					ArrayList<Button> topButtons = new ArrayList<>();
 					
 					Pane main = new Pane();
-					
 					main.setPrefSize(700, 850);
-					
-					
 					main.setStyle("-fx-background-color: #ddcaaa; -fx-border-color: #000000; -fx-font-size: 20; -fx-border-width: 0 4 4 4");
-					
-					
-					mainStuff(topButtons, root);
-					
 					root.getChildren().add(main);
+					
+					
+					
 				} else {
 					
 				}
