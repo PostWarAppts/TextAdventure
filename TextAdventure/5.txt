@@ -1,2 +1,17 @@
-110
-2145
+0
+1940
+0
+break
+You are one of the many gods of this unnamed land.
+Residing above it all, your people have adopted a policy 
+of non interference for many years however recently 
+you've felt the ripples of a period of great strife spreading 
+across the lands.
+Thus 6 of you have been sent down to influence the land 
+in whatever direction you choose. 
+Each of you have chosen to emerge in a different location 
+break
+across the lands, you must choose an avatar to inhabit 
+your essence and tether you to the lands, should your 
+avatar perish you will become unlinked and fall into 
+the voids beyond.
